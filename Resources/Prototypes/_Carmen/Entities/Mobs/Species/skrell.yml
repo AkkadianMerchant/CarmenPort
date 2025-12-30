@@ -1,0 +1,55 @@
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobSkrell
+  name: Urist McFrog
+  abstract: true
+  components:
+  - type: Body
+    prototype: Skrell
+    requiredLegs: 2
+  - type: Hunger
+  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+    sprite: Mobs/Species/Skrell/parts.rsi
+    state: preview_longhair
+  - type: Thirst
+  - type: Carriable # Carrying system from nyanotrasen.
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: HumanoidAppearance
+    species: Skrell
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - SolCommon
+    understands:
+    - TauCetiBasic
+    - SolCommon
+  - type: FootPrints
+  - type: Bloodstream
+    bloodReagent: CopperBlood
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#162581"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+
+- type: entity
+  save: false
+  name: Urist McFrog
+  parent: MobHumanDummy
+  id: MobSkrellDummy
+  categories: [ HideSpawnMenu ]
+  description: A dummy skrell meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Skrell
+  - type: Inventory
+    speciesId: skrell
