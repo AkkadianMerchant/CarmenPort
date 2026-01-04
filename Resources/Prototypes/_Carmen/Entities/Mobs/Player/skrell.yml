@@ -1,0 +1,5 @@
+- type: entity
+  save: false
+  name: Urist McFrog
+  parent: BaseMobSkrell
+  id: MobSkrell

@@ -1,0 +1,19 @@
+- type: marking
+  id: SkrellHairMale
+  bodyPart: Hair
+  markingCategory: Hair
+  canBeDisplaced: false
+  speciesRestriction: [Skrell]
+  sprites:
+    - sprite: _Carmen/Mobs/Customization/skrellhair.rsi
+      state: skrell_hair_m_s
+
+- type: marking
+  id: SkrellHairFemale
+  bodyPart: Hair
+  markingCategory: Hair
+  canBeDisplaced: false
+  speciesRestriction: [Skrell]
+  sprites:
+    - sprite: _Carmen/Mobs/Customization/skrellhair.rsi
+      state: skrell_hair_f_s
