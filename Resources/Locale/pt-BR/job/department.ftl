@@ -1,0 +1,11 @@
+department-Logistics = Logística
+department-Civilian = Civil
+department-Command = Comando
+department-CentralCommand = Central Command
+department-Engineering = Engenharia
+department-Medical = Médico
+department-Security = Segurança
+department-Epistemics = Pesquisa
+department-Silicon = Sintético
+department-Specific = Específico
+department-Dignitary = Dignitário
