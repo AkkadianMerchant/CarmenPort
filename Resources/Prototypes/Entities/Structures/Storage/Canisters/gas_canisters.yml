@@ -131,6 +131,7 @@
           - 0 # Ammonia
           - 0 # N2O
           - 0 # Frezon
+          - 0 # Hydrogen
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -643,6 +644,124 @@
   - type: Lock
     locked: true
 
+- type: entity
+  parent: GasCanister
+  id: HydrogenCanister
+  name: hydrogen canister
+  components:
+    - type: Sprite
+      layers:
+        - state: purple
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles: # List of gasses for easy reference
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Phoron
+          - 0 # Tritium
+          - 0 # Water vapor
+          - 0 # Ammonia
+          - 0 # N2O
+          - 0 # Frezon
+          - 1871.71051 # Hydrogen
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HydrogenCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanister
+  id: ChlorineCanister
+  name: chlorine canister
+  components:
+    - type: Sprite
+      layers:
+        - state: vomitgreen
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles: # List of gasses for easy reference
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Phoron
+          - 0 # Tritium
+          - 0 # Water vapor
+          - 0 # Ammonia
+          - 0 # N2O
+          - 0 # Frezon
+          - 0 # Hydrogen
+          - 1871.71051 # Chlorine
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ChlorineCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+    - type: GenericVisualizer
+      visuals:
+        enum.AnchorVisuals.Anchored:
+          connectedToPort:
+            False: { state: can-connectorCl, visible: false }
+            True: { state: can-connectorCl, visible: true }
+        enum.LockVisuals.Locked:
+          locked:
+            False: { state: unlocked, shader: "unshaded" }
+            True: { state: locked, shader: "unshaded" }
+        enum.GasCanisterVisuals.TankInserted:
+          tankInserted:
+            False: { state: can-openCl, visible: false }
+            True: { state: can-openCl, visible: true }
+        enum.GasCanisterVisuals.PressureState:
+          pressureLight:
+            0: { state: can-o0Cl, shader: "unshaded" }
+            1: { state: can-o1Cl, shader: "unshaded" }
+            2: { state: can-o2Cl, shader: "unshaded" }
+            3: { state: can-o3Cl, shader: "unshaded" }
 # Broke Entities
 
 - type: entity
@@ -788,3 +907,18 @@
   - type: Sprite
     state: frezon-1
 
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: HydrogenCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: purple-1
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: ChlorineCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: vomitgreen-1
